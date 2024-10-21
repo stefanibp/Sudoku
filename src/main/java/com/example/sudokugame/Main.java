@@ -1,6 +1,6 @@
 package com.example.sudokugame;
 
-import com.example.sudokugame.view.GameStage;
+
 import com.example.sudokugame.view.WelcomeStage;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -15,7 +15,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        new WelcomeStage();
-        new GameStage();
+        WelcomeStage.getInstance();
     }
 }

@@ -11,14 +11,14 @@ import java.io.IOException;
 
 public class GameStage extends Stage {
 
-        //private GameController gameController;
+        private GameController gameController;
 
 
         public GameStage() throws IOException {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/sudokugame/game-view.fxml"));
             Parent root = loader.load();
-            //gameController = loader.getController();
+            gameController = loader.getController();
             Scene scene = new Scene(root);
             setScene(scene);
             setTitle("Sudoku");
@@ -26,4 +26,26 @@ public class GameStage extends Stage {
             setResizable(false);
             show();
         }
+
+    public GameController getGameController() {
+        return gameController;
+    }
+
+    public static GameStage getInstance() throws IOException {
+        GameStageHolder.INSTANCE =
+                GameStageHolder.INSTANCE != null ?
+                        GameStageHolder.INSTANCE :
+                        new GameStage();
+
+        return GameStageHolder.INSTANCE;
+    }
+
+    private static class GameStageHolder {
+        private static GameStage INSTANCE;
+    }
+
+    public static void deleteInstance() {
+        GameStageHolder.INSTANCE.close();
+        GameStageHolder.INSTANCE = null;
+    }
 }
