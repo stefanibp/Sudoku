@@ -20,12 +20,10 @@ public class AlertBox implements IAlertBox {
         alert.showAndWait();
     }
 
-    // Versión con el valor por defecto de `title`
     public void showMessageInformation(String header, String content) {
         showMessageInformation("Alerta", header, content);
     }
 
-    // Versión con valores por defecto para `title` y `header`
     public void showMessageInformation(String content) {
         showMessageInformation("Alerta", "Información", content);
     }

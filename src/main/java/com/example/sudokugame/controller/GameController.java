@@ -15,7 +15,7 @@ import javafx.scene.text.Font;
 
 public class GameController {
 
-    private int helpCounter = 0;  // Contador de uso del botón de ayuda
+    private int helpCounter = 0;
     private final int MAX_HELP_USES = 3;
 
 
@@ -30,17 +30,17 @@ public class GameController {
     void onHandleButtonHelp(ActionEvent event) {
 
         if (helpCounter < MAX_HELP_USES) {
-            int[] updatedCell = sudoku.fillRandomCell();  // Actualiza una celda aleatoria
+            int[] updatedCell = sudoku.fillRandomCell();
 
             if (updatedCell != null) {
-                resetGridPane();  // Borra y vuelve a crear la cuadrícula con las celdas actualizadas
-                helpCounter++;  // Incrementar el contador de uso de la ayuda
-                //new AlertBox().showMessageInformation("Has usado la ayuda " + helpCounter + " de " + MAX_HELP_USES + " veces.");
+                resetGridPane();
+                helpCounter++;
+
             } else {
                 new AlertBox().showMessageInformation("No hay más celdas vacías o no se puede encontrar una solución válida.");
             }
 
-            // Deshabilitar el botón si se alcanza el límite de usos
+
             if (helpCounter >= MAX_HELP_USES) {
                 helpButton.setDisable(true);
                 new AlertBox().showMessageInformation("Ya no puedes usar más ayudas.");
@@ -55,29 +55,25 @@ public class GameController {
 
     }
 
-
-
-    // Método para borrar y volver a crear el GridPane según el estado actual del Sudoku
     private void resetGridPane() {
-        // Limpiar el GridPane
+
         gridPane.getChildren().clear();
 
-        // Reconstruir el GridPane basado en los valores actuales del Sudoku
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
                 TextField txt = new TextField();
-                textFieldStyle(txt); // Aplicar estilo al TextField
+                textFieldStyle(txt);
                 txt.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.DOTTED, CornerRadii.EMPTY, new BorderWidths(1))));
 
-                int value = sudoku.getValue(i, j); // Obtener el valor del Sudoku
+                int value = sudoku.getValue(i, j);
 
                 if (value != 0) {
-                    txt.setText(String.valueOf(value)); // Establecer el valor si no es 0
+                    txt.setText(String.valueOf(value));
                 }
 
-                verityEmptyNumber(txt, value); // Verificar si la celda está vacía o tiene un número
-                gridPane.add(txt, j, i); // Agregar el TextField al GridPane en la posición correcta
-                onKeyTxtPressed(txt, i, j); // Escuchar los cambios de las teclas en la celda
+                verityEmptyNumber(txt, value);
+                gridPane.add(txt, j, i);
+                onKeyTxtPressed(txt, i, j);
             }
         }
     }
@@ -98,7 +94,7 @@ public class GameController {
                 new AlertBox().showMessageInformation(content);
                 return null;
             } else {
-                // Si la entrada es válida, restaurar el borde a su estado normal
+
                 txt.setStyle("-fx-background-color: #b693ff;");
             }
 
@@ -109,15 +105,15 @@ public class GameController {
             String input = txt.getText().trim();
             if (input.isEmpty()) return;
 
-            int number = Integer.parseInt(input); // Convertir el carácter a número
+            int number = Integer.parseInt(input);
 
-            sudoku.setValue(i, j, number);  // Guardar la entrada del jugador
+            sudoku.setValue(i, j, number);
 
             if (!sudoku.isCompleteAndValidWithSubGrids()) {
                 txt.setStyle("-fx-background-color: #b693ff; -fx-border-color: red; -fx-border-width: 2px;");
                 String content = "No se puede ingresar el número (" + input + ") porque está en una columna, fila o subcuadro";
                 new AlertBox().showMessageInformation(content);
-                sudoku.deletedValue(i, j); // Eliminar el valor si no es válido
+                sudoku.deletedValue(i, j);
                 txt.clear();
             }
 
@@ -129,7 +125,7 @@ public class GameController {
 
     }
 
-    // Método auxiliar para aplicar el estilo a un TextField
+
     private void verityEmptyNumber(TextField txt, int n) {
         if (n != 0) {
             txt.setEditable(false);
@@ -141,7 +137,7 @@ public class GameController {
         }
     }
 
-    // Estilo del TextField
+
     public TextField textFieldStyle(TextField txt) {
         txt.setMaxWidth(50);
         txt.setMaxHeight(50);
@@ -152,7 +148,7 @@ public class GameController {
     }
 
     public void initialize() {
-        // Inicializa el GridPane al inicio
+
         resetGridPane();
     }
 }
