@@ -12,10 +12,21 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-
+/**
+ * This class controls the interaction between the Sudoku game and the user interface.
+ * It manages the game's logic, user input, and grid updates, allowing users to play Sudoku interactively.
+ *
+ * @author Stefania Bolaños
+ */
 public class GameController {
 
+    /**
+     * Counter for the number of times the user has requested help.
+     */
     private int helpCounter = 0;
+    /**
+     * Maximum number of help uses allowed per game.
+     */
     private final int MAX_HELP_USES = 3;
 
 
@@ -24,8 +35,17 @@ public class GameController {
 
     @FXML
     private GridPane gridPane;
+
+    /**
+     * Sudoku game model.
+     */
     Sudoku sudoku = new Sudoku();
 
+    /**
+     * Handles the help button click event. Fills a random empty cell with the correct value.
+     *
+     * @param event The ActionEvent triggered by the help button.
+     */
     @FXML
     void onHandleButtonHelp(ActionEvent event) {
 
@@ -41,7 +61,7 @@ public class GameController {
             }
 
 
-            if (helpCounter >= MAX_HELP_USES) {
+            if (helpCounter > MAX_HELP_USES) {
                 helpButton.setDisable(true);
                 new AlertBox().showMessageInformation("Ya no puedes usar más ayudas.");
             }
@@ -55,6 +75,9 @@ public class GameController {
 
     }
 
+    /**
+     * Resets the GridPane by clearing and re-populating it with the current Sudoku board values.
+     */
     private void resetGridPane() {
 
         gridPane.getChildren().clear();
@@ -78,7 +101,14 @@ public class GameController {
         }
     }
 
-
+    /**
+     * Adds a listener to the TextField to handle key press events.
+     * Validates user input and updates the Sudoku board accordingly.
+     *
+     * @param txt The TextField representing a cell in the Sudoku grid.
+     * @param i   The row index of the cell.
+     * @param j   The column index of the cell.
+     */
     private void onKeyTxtPressed(TextField txt, int i, int j) {
         txt.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
@@ -122,10 +152,15 @@ public class GameController {
             }
         });
 
-
     }
 
-
+    /**
+     * Updates the text field appearance based on whether it contains a number or is empty.
+     * If the field contains a number, it becomes non-editable, and if it's empty, it allows input.
+     *
+     * @param txt The text field to verify.
+     * @param n The number in the text field.
+     */
     private void verityEmptyNumber(TextField txt, int n) {
         if (n != 0) {
             txt.setEditable(false);
@@ -137,7 +172,12 @@ public class GameController {
         }
     }
 
-
+    /**
+     * Applies a specific style to the given text field, including font, size, and alignment.
+     *
+     * @param txt The text field to style.
+     * @return The styled text field.
+     */
     public TextField textFieldStyle(TextField txt) {
         txt.setMaxWidth(50);
         txt.setMaxHeight(50);
@@ -147,6 +187,10 @@ public class GameController {
         return txt;
     }
 
+    /**
+     * Initializes the game by setting up the Sudoku grid pane when the application starts.
+     * This method is automatically called after the FXML fields are injected.
+     */
     public void initialize() {
 
         resetGridPane();

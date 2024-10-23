@@ -12,7 +12,7 @@ public class WelcomeController {
 
     @FXML
     void buttonPlay(ActionEvent event) throws IOException {
-        /** When the "Start" button is clicked initialize the GameController for the game */
+        /** When the "Jugar" button is clicked initialize the GameController for the game */
         GameStage.getInstance().getGameController().initialize();
         /** Close the WelcomeStage */
         WelcomeStage.deleteInstance();
