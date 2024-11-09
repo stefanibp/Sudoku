@@ -19,8 +19,8 @@ public class LinkedList<T> implements IList<T> {
      * @param <T> the type of data held by the node
      */
     private static class Node<T> {
-        T data; //almacena el dato de tipo T
-        Node<T> next;// next: es una referencia al siguiente nodo en la lista.
+        T data;
+        Node<T> next;
 
         Node(T data) {
             this.data = data;
@@ -35,8 +35,8 @@ public class LinkedList<T> implements IList<T> {
     public void addFirst(final T elem) {
         Node<T> newNode = new Node<>(elem);
         if (isEmpty()) {
-            head = newNode; //apunta al nuevo nodo
-            tail = newNode; //apunta al nuevo nodo
+            head = newNode;
+            tail = newNode;
         } else {
             newNode.next = head;
             head = newNode;
@@ -60,9 +60,9 @@ public class LinkedList<T> implements IList<T> {
     @Override
     public T getFirst() {
         if (isEmpty()) {
-            throw new NoSuchElementException("List is empty"); //excepcion por si la lista esta vacia
+            throw new NoSuchElementException("List is empty");
         }
-        return head.data;//retorna el valor almacenado en head
+        return head.data;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class LinkedList<T> implements IList<T> {
         if (isEmpty()) {
             throw new NoSuchElementException("List is empty");
         }
-        return tail.data;//retorna el valor almacenado en tail
+        return tail.data;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class LinkedList<T> implements IList<T> {
         head = head.next;
         size--;
         if (head == null) {
-            tail = null; // If head becomes null, tail should also be null
+            tail = null;
         }
     }
 

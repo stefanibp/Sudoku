@@ -10,14 +10,14 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="550.0" style="-fx-background-image: url(&quot;galaxy.png&quot;);" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sudokugame.controller.GameController">
    <children>
-      <GridPane fx:id="gridPane" layoutX="129.0" layoutY="191.0" prefHeight="300.0" prefWidth="300.0" style="-fx-grid-lines-visible: true; -fx-border-color: black; -fx-border-width: 2px; -fx-background-color: #b693ff;">
+      <GridPane fx:id="gridPane" layoutX="129.0" layoutY="193.0" prefHeight="301.0" prefWidth="292.0" style="-fx-grid-lines-visible: true; -fx-border-color: black; -fx-border-width: 2px; -fx-background-color: #b693ff;">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="0.0" prefWidth="47.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="0.0" prefWidth="51.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="0.0" prefWidth="51.0" /> <!-- -->
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="0.0" prefWidth="49.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="7.0" prefWidth="50.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="50.0" /> <!-- -->
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="50.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -28,7 +28,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Button layoutX="198.0" layoutY="522.0" mnemonicParsing="false" onAction="#onHandleButtonHelp" prefHeight="44.0" prefWidth="155.0" style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: white; -fx-background-color: black;" text="Ayuda" textFill="#f5f5f5">
+      <Button fx:id="helpButton" layoutX="198.0" layoutY="522.0" mnemonicParsing="false" onAction="#onHandleButtonHelp" prefHeight="44.0" prefWidth="155.0" style="-fx-border-radius: 20px; -fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: white; -fx-background-color: black;" text="Ayuda" textFill="#f5f5f5">
          <font>
             <Font name="Consolas Bold" size="22.0" />
          </font>
